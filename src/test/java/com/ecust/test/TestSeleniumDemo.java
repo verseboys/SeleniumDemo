@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
@@ -27,6 +28,11 @@ public class TestSeleniumDemo {
         driver.quit();
 
     }
+
+
+
+
+
 
     /**
      * 测试向input标签输入值
@@ -103,4 +109,56 @@ public class TestSeleniumDemo {
         PageUtils.getAnotherPage(driver);
         System.out.println("现在的页面是："+driver.getTitle());
     }
+
+
+    @Test
+    public  void  to() throws Exception {
+        //加载驱动器
+      //  System.setProperty("webdriver.chrome.driver","C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe");
+        //打开浏览器
+        WebDriver driver = new ChromeDriver();
+        //打开网站
+        driver.get("https://www.baidu.com/");
+        //通过id定位所搜框
+        WebElement searchBox = driver.findElement(By.id("kw"));
+        //输入内容
+        searchBox.sendKeys("电影");
+        //定位百度一下按钮
+        WebElement searchButton = driver.findElement(By.id("su"));
+        //点击百度一下
+        searchButton.submit();
+        //等待5s
+        Thread.sleep(5000);
+        //页面关闭
+        driver.close();
+
+        //打开浏览器
+        WebDriver driver2 = new ChromeDriver();
+        //打开网站
+        driver2.get("https://www.douban.com/");
+        //通过name定位所搜框
+        WebElement searchBox2 = driver2.findElement(By.name("q"));
+        //输入内容
+        searchBox2.sendKeys("电影");
+        //点击百度一下
+        searchBox2.submit();
+        //等待5s
+        Thread.sleep(5000);
+        //页面关闭
+        driver2.close();
+        //通过tagname查找元素
+        //打开浏览器
+        WebDriver driver3 = new ChromeDriver();
+        //打开网站
+        driver3.get("https://www.mi.com/");
+        //通过tagname查找
+        List<WebElement> scriptList = driver3.findElements(By.tagName("script"));
+        //查找tagname为script的数量并输出
+        System.out.println("there are "+scriptList.size()+" script");
+        //等待5s
+        Thread.sleep(5000);
+        //页面关闭
+        driver3.close();
+    }
+
 }

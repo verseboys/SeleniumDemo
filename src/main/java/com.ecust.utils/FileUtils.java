@@ -64,7 +64,7 @@ public class FileUtils {
      * @return
      */
     public static List<String> traverseFolder(String path) {
-        List<String> fileUrls = new ArrayList<>();
+        List<String> fileUrls = new ArrayList<String>();
         int fileNum = 0, folderNum = 0;
         File file = new File(path);
         if (file.exists()) {
@@ -197,7 +197,7 @@ public class FileUtils {
      * @return
      */
     public static List<String> getAllData(File file) {
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         if (file.exists() && file != null) {
             try {
                 InputStreamReader read = new InputStreamReader(new FileInputStream(file), "UTF-8");// 考虑到编码格式

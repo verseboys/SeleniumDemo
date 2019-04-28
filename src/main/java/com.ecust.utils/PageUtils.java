@@ -34,6 +34,30 @@ public class PageUtils {
     }
 
     /**
+     * document.getElementsbyname(name) 以数组形式返回带有指定名称的元素集合，因为允许多个元素是相同的名称；
+     javascript中数组索引从0开始，[0]代表取数组中第1个元素，[1]代表取数组中第2个元素.
+     * @param driver
+     * @param name
+     * @param value
+     */
+    public static  void inputStrByJSOnName(WebDriver driver, String name, String value){
+        //1、js代码，用id来得到 input 标签，并且对该标签赋值
+        String setValueJS = "document.getElementsByName('"+name+"'[0]).value='" + value + "';";
+
+        //2、使用driver执行该js代码
+        ((JavascriptExecutor) driver).executeScript(setValueJS);
+
+    }
+
+
+
+
+
+
+
+
+
+    /**
      * 我们在开启浏览器的时候里面有很多的标签页，但是一个driver只能对应一个标签页。
      * 而每一个driver的handle也是对应一个标签页，如果我们想跳转到别的标签页，需要
      * 首先得到另一个标签页的handle，然后调用driver.switchTo().window(handle);
